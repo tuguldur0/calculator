@@ -1,0 +1,30 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#calculator {
+    height: 700px;
+    width: 400px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+.button {
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    font-size: 30px;
+}
+#input {
+    height: 200px;
+    width: 400px;
+    border: 1px solid white;
+    font-size: 40px;
+    text-align: right;
+}
