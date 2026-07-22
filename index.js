@@ -1,5 +1,4 @@
 const numbers = ["del", "clear", "%", "/", 7, 8, 9, "x", 4, 5, 6, "-", 1, 2, 3, "+", "+/-", 0, "."];
-const numbs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const calculator = document.getElementById("calculator");
 const equals = document.createElement("button")
 const newArr = numbers.map(displayNums);
@@ -25,42 +24,26 @@ function displayNums(num) {
             input.value = input.value.substring(0, [input.value.length-1]);
         } else if (num == "clear"){
             input.value = "";
-        } else if (num == "%"){
-            let temp0 = input.value;
-            input.value = ""
-            equals.addEventListener("click", function(){
-                     input.value = temp0 % input.value;
-            })
         } else if (num == "/"){
-            let temp1 = input.value;
-            input.value = ""
+            let temp = Number(input.value);
+            input.value = "";
             equals.addEventListener("click", function(){
-                input.value = temp1 / input.value;
+                console.log(temp , input.value)
+                let temp1 = Number(input.value);
+          
+                input.value = String(temp / temp1);
+
             })
-                        
-        } else if (num == "x"){
-            let temp2 = input.value;
-            input.value = ""
-            equals.addEventListener("click", function(){
-                input.value = temp2 * input.value;
-            })
-                        
-        } else if (num == "-"){
-            let temp3 = input.value;
-            input.value = ""
-            equals.addEventListener("click", function(){
-                input.value = temp3 - input.value;
-            })
-        } else if (num == "+"){
-            let temp3 = input.value;
-            input.value = ""
-            equals.addEventListener("click", function(){
-                input.value = temp3 + input.value;
-            })
-        } else if (num == "."){
-            input.value += "."
-        } else if (num == "+/-"){
-            input.value *= -1;
+
         }
+        //  else if (num == "%"){
+        //     let temp = Number(input.value);
+        //     input.value = "";
+        //     equals.addEventListener("click", function(){
+        //         let temp1 = Number(input.value);
+        //         let result = Number(temp % temp1);
+        //         input.value = result;
+        //     })
+        // }
     })
 }
