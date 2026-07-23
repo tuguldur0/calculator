@@ -4,6 +4,9 @@ const equals = document.createElement("button")
 const newArr = numbers.map(displayNums);
 const input = document.getElementById("input");
 
+let currentOperator;
+let temp1;
+
 equals.textContent = "="
 equals.classList.add("button")
 calculator.appendChild(equals);
@@ -15,35 +18,67 @@ function displayNums(num) {
     calculator.appendChild(button);
     
     button.addEventListener("click", function(){
-        for(let i = 0; i < 10; i++){
+        for(let i = 1; i < 10; i++){
             if(num == i){
                 input.value += num;
             }
         }
         if(num == "del"){
-            input.value = input.value.substring(0, [input.value.length-1]);
+            input.value = input.value.pop;
+        } else if (num == 0 && input.value != ""){
+            input.value += num;
         } else if (num == "clear"){
             input.value = "";
+        } else if (num == "%"){
+            currentOperator = num;
+            temp1 = Number(input.value);
+            input.value= "";
         } else if (num == "/"){
-            let temp = Number(input.value);
+            currentOperator = num;
+            temp1 = Number(input.value);
             input.value = "";
-            equals.addEventListener("click", function(){
-                console.log(temp , input.value)
-                let temp1 = Number(input.value);
-          
-                input.value = String(temp / temp1);
-
-            })
-
-        }
-        //  else if (num == "%"){
-        //     let temp = Number(input.value);
-        //     input.value = "";
-        //     equals.addEventListener("click", function(){
-        //         let temp1 = Number(input.value);
-        //         let result = Number(temp % temp1);
-        //         input.value = result;
-        //     })
-        // }
+        } else if (num == "x"){
+            currentOperator = num;
+            temp1 = Number(input.value);
+            input.value = "";
+        } else if (num == "-"){
+            currentOperator = num;
+            temp1 = Number(input.value);
+            input.value = "";
+        } else if (num == "+"){
+            currentOperator = num;
+            temp1 = Number(input.value);
+            input.value = "";
+        } else if (num == "+/-"){
+            if(input.value == ""){
+                input.value = -1;
+            } else {
+                input.value = Number(input.value) * -1
+            }
+        } else if(num == "."){
+            input.value = String(input.value) + "."
+        } 
+        
     })
+
 }
+equals.addEventListener("click", function(){
+    let temp2 = Number(input.value);
+    let result;
+    if(currentOperator == "%"){
+        result = temp1 % temp2;
+        input.value = result;
+    } else if (currentOperator == "/"){
+        result = temp1 / temp2;
+        input.value = result;
+    } else if (currentOperator == "x"){
+        result = temp1 * temp2;
+        input.value = result;
+    } else if (currentOperator == "-"){
+        result = temp1 - temp2;
+        input.value = result;
+    } else if (currentOperator == "+"){
+        result = temp1 + temp2;
+        input.value = result;
+    }
+})
