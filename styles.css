@@ -1,6 +1,6 @@
 * {
     font-family: "Roboto", sans-serif;
-    
+    background-color: #000000;
 }
 #content {
     display: flex;
@@ -10,38 +10,42 @@
 #calculator {
     height: 650px;
     width: 400px;
-    border: 2px solid gray;
     border-radius: 5px;
     padding: 10px;
 }
 .button {
     height: 100px;
     width: 100px;
-    background-color: rgb(32, 32, 32);
+    background-color: #a5a5a5;
     color: white;
     border-radius: 50px;
+    border: 1px solid #a5a5a5;
     font-size: 30px;
 }
 #input {
     height: 150px;
     width: 400px;
-    border: 1px solid white;
-    font-size: 40px;
+    font-size: 70px;
     text-align: right;
+    border: 2px solid #000000;
+    color: white;
+    font-weight: 200;
 }
 .operators {
     height: 100px;
     width: 100px;
-    background-color: rgb(32, 32, 32);
+    background-color: #FF9F0A;
     color: white;
     border-radius: 50px;
+    border: 1px solid #FF9F0A;
     font-size: 30px;
 }
-/* .operators {
+.modifiers{
     height: 100px;
     width: 100px;
-    background-color: rgb(255, 115, 0);
+    background-color: #333333;
     color: white;
     border-radius: 50px;
+    border: 1px solid #333333;
     font-size: 30px;
-} */
+}

@@ -2,11 +2,12 @@ const numbers = ["del", "AC", "%", "/", 7, 8, 9, "x", 4, 5, 6, "-", 1, 2, 3, "+"
 const calculator = document.getElementById("calculator");
 const equals = document.createElement("button")
 const operators = ["%", "/", "x", "-", "+"];
+const modifiers = ["AC", "%", "del"];
 const newArr = numbers.map(displayNums);
 const input = document.getElementById("input");
 let currentOperator, temp1, temp2;
 equals.textContent = "="
-equals.classList.add("button")
+equals.classList.add("operators")
 calculator.appendChild(equals);
 function reset(){
     temp1, temp2, currentOperator = undefined;
@@ -29,6 +30,8 @@ function displayNums(num) {
     button.textContent = num;
     if(operators.includes(num)){
         button.classList.add("operators");
+    } else if (modifiers.includes(num)){
+        button.classList.add("modifiers")
     } else {
         button.classList.add("button");
     }
