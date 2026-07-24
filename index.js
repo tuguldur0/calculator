@@ -4,16 +4,12 @@ const equals = document.createElement("button")
 const operators = ["%", "/", "x", "-", "+"];
 const newArr = numbers.map(displayNums);
 const input = document.getElementById("input");
-let currentOperator;
-let temp1;
-let temp2;
+let currentOperator, temp1, temp2;
 equals.textContent = "="
 equals.classList.add("button")
 calculator.appendChild(equals);
 function reset(){
-    temp1 = undefined;
-    temp2 = undefined;
-    currentOperator = undefined;
+    temp1, temp2, currentOperator = undefined;
 }
 function operate(num1, num2, op){
     if(op == "%"){
@@ -38,10 +34,9 @@ function displayNums(num) {
     }
     calculator.appendChild(button); 
     button.addEventListener("click", function(){
-            if(typeof num === "number"){
-                input.value += num;
-            }
-        if(num == "del"){
+        if(typeof num === "number"){
+            input.value += num;
+        } else if(num == "del"){
             input.value = input.value.substring(0, input.value.length-2);
         } else if (num == 0 && input.value != ""){
             input.value += num;
