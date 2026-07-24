@@ -40,7 +40,7 @@ function displayNums(num) {
         if(typeof num === "number"){
             input.value += num;
         } else if(num == "del"){
-            input.value = input.value.substring(0, input.value.length-2);
+            input.value = input.value.substring(0, input.value.length-1);
         } else if (num == 0 && input.value != ""){
             input.value += num;
         } else if (num == "AC"){
