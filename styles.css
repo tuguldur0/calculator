@@ -29,6 +29,14 @@
     font-size: 40px;
     text-align: right;
 }
+.operators {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-radius: 50px;
+    font-size: 30px;
+}
 /* .operators {
     height: 100px;
     width: 100px;

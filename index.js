@@ -10,7 +10,11 @@ let temp2;
 equals.textContent = "="
 equals.classList.add("button")
 calculator.appendChild(equals);
-
+function reset(){
+    temp1 = undefined;
+    temp2 = undefined;
+    currentOperator = undefined;
+}
 function operate(num1, num2, op){
     if(op == "%"){
         return num1 % num2;
@@ -27,30 +31,23 @@ function operate(num1, num2, op){
 function displayNums(num) {
     let button = document.createElement("button");
     button.textContent = num;
-    for(let i = 0; i < operators.length; i++){
-        if(num == operators[i]){
-            button.classList.add("operators")
-        } else {
-            button.classList.add("button")
-        }
+    if(operators.includes(num)){
+        button.classList.add("operators");
+    } else {
+        button.classList.add("button");
     }
-    calculator.appendChild(button);
-    
+    calculator.appendChild(button); 
     button.addEventListener("click", function(){
-        for(let i = 1; i < 10; i++){
-            if(num == i){
+            if(typeof num === "number"){
                 input.value += num;
             }
-        }
         if(num == "del"){
             input.value = input.value.substring(0, input.value.length-2);
         } else if (num == 0 && input.value != ""){
             input.value += num;
         } else if (num == "AC"){
             input.value = "";
-            temp1 = undefined;
-            temp2 = undefined;
-            currentOperator = undefined;
+            reset();
         } else if (operators.includes(num)){
             if(temp1 == undefined && currentOperator == undefined){
                 currentOperator = num;
@@ -69,33 +66,37 @@ function displayNums(num) {
                 input.value = Number(input.value) * -1
             }
         } else if(num == "."){
-            if(!input.value.includes(".")){
-            input.value = String(input.value) + "."
+            if((!input.value.includes(".")) && input.value != ""){
+                input.value = String(input.value) + "."
+            } else if(input.value == ""){
+                input.value = "0."
             }
         } 
-        
     })
-
 }
-
 equals.addEventListener("click", function(){
     temp2 = Number(input.value);
     if(input.value != ""){
     if(currentOperator == "%"){
         result = temp1 % temp2;
         input.value = result;
+        reset();
     } else if (currentOperator == "/"){
         result = temp1 / temp2;
         input.value = result;
+        reset();
     } else if (currentOperator == "x"){
         result = temp1 * temp2;
         input.value = result;
+        reset();
     } else if (currentOperator == "-"){
         result = temp1 - temp2;
         input.value = result;
+        reset();
     } else if (currentOperator == "+"){
         result = temp1 + temp2;
         input.value = result;
+        reset();
        }
     }
 })
